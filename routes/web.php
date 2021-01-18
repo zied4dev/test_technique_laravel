@@ -13,12 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [\App\Http\Controllers\StarController::class,'home']);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', [\App\Http\Controllers\StarController::class,'dashboard'])->name('dashboard');
+    Route::get('/create', [\App\Http\Controllers\StarController::class,'create'])->name('createStar');
+    Route::post('/store', [\App\Http\Controllers\StarController::class,'storeStar'])->name('storeStar');
+    Route::put('/update/{star}', [\App\Http\Controllers\StarController::class,'updateStar'])->name('updateStar');
+
+    Route::get('/edit/{star}', [\App\Http\Controllers\StarController::class,'editStar'])->name('editStar');
+    Route::get('/delete/{star}', [\App\Http\Controllers\StarController::class,'deleteStar'])->name('deleteStar');
+
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

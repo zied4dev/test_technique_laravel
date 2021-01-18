@@ -23,7 +23,8 @@ class StarRepository implements StarRepositoryInterface
 
     public function displayAll()
     {
-        // TODO: Implement displayAll() method.
+        return $this->star->paginate(10);
+
     }
 
     public function store(StarRequest $request)

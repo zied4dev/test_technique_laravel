@@ -6,10 +6,17 @@ use App\Models\Star;
 use App\Repositories\StarRepository;
 use App\Repositories\StarRepositoryInterface;
 use Illuminate\Http\Request;
+use View;
 
 class StarController extends Controller
 {
     private $starRepository;
+
+    public function __construct(StarRepositoryInterface $starRepository)
+    {
+        $this->starRepository=$starRepository;
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -17,10 +24,10 @@ class StarController extends Controller
      * @param StarRepositoryInterface $starRepository
      * @return \Illuminate\Http\Response
      */
-    public function index(StarRepositoryInterface $starRepository)
+    public function index()
     {
         //
-        $this->starRepository=$starRepository;
+
     }
 
     /**
@@ -89,6 +96,11 @@ class StarController extends Controller
         //
     }
 
+    /**
+     * Afficher la liste de star dans le dashboard
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function dashboard()
     {
         $allStars=$this->starRepository->displayAll();

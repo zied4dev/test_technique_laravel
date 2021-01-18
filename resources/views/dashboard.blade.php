@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -56,7 +56,7 @@
 
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <a href="{{route('editStar',$oneStar->id)}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                                    <a href="{{route('delete',$oneStar->id)}}" class="text-indigo-600 hover:text-indigo-900">Sup</a>
+                                                    <a href="{{route('deleteStar',$oneStar->id)}}" class="text-indigo-600 hover:text-indigo-900">Sup</a>
 
                                                 </td>
                                             </tr>
@@ -74,5 +74,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 </x-app-layout>

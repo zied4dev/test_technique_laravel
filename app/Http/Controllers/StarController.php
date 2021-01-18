@@ -3,18 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Star;
+use App\Repositories\StarRepository;
+use App\Repositories\StarRepositoryInterface;
 use Illuminate\Http\Request;
 
 class StarController extends Controller
 {
+    private $starRepository;
+
     /**
      * Display a listing of the resource.
      *
+     * @param StarRepositoryInterface $starRepository
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(StarRepositoryInterface $starRepository)
     {
         //
+        $this->starRepository=$starRepository;
     }
 
     /**

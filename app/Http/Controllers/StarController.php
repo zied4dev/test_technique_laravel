@@ -88,4 +88,11 @@ class StarController extends Controller
     {
         //
     }
+
+    public function dashboard()
+    {
+        $allStars=$this->starRepository->displayAll();
+        return view('dashboard',compact('allStars'));
+    }
+
 }

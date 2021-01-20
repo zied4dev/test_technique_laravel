@@ -4,8 +4,9 @@
 namespace App\Repositories;
 
 
+use App\Http\Requests\Star\StarRequest;
+
 use App\Models\Star;
-use mysql_xdevapi\Exception;
 
 class StarRepository implements StarRepositoryInterface
 {
@@ -29,7 +30,25 @@ class StarRepository implements StarRepositoryInterface
 
     public function store(StarRequest $request)
     {
-        // TODO: Implement store() method.
+        try {
+            $star = new Star();
+            $star->nom = $request->nom;
+            $star->prenom = $request->prenom;
+            $star->description = $request->description;
+            if ($files = $request->file('url_image')) {
+                $destinationPath = 'photos/avatar/'; // upload path
+                $profileImage = $star->nom.'-'.date('YmdHis') . "." . $files->getClientOriginalExtension();
+                $files->move($destinationPath, $profileImage);
+                $star->url_image = "$profileImage";
+            }
+
+            $star->save();
+            return true;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+
     }
 
     public function update(StarRequest $request, Star $star)

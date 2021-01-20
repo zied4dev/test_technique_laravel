@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+
+use App\Http\Requests\Star\StarRequest;
 use App\Models\Star;
 
 interface StarRepositoryInterface

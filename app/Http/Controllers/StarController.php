@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Star\StarRequest;
 use App\Models\Star;
 use App\Repositories\StarRepository;
 use App\Repositories\StarRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use View;
 
 class StarController extends Controller
@@ -24,7 +26,7 @@ class StarController extends Controller
      * @param StarRepositoryInterface $starRepository
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
         //
 
@@ -37,18 +39,30 @@ class StarController extends Controller
      */
     public function create()
     {
-        //
+        return view('star.add');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     *
+     * @param StarRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeStar(StarRequest $request)
     {
         //
+
+
+        if($this->starRepository->store($request)==true)
+        {
+            return redirect('dashboard')->with('alert-succes','Star est ajouté avec succes');
+
+        }else
+            {
+                return redirect('dashboard')->with('alert-error','Star est ajouté avec succes');
+            };
+
     }
 
     /**

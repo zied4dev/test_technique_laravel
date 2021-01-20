@@ -38,4 +38,19 @@ class StarRequest extends FormRequest
 
         return $rules;
     }
+
+    public function messages()
+    {
+        return [
+            'nom.required' => 'le champs nom est requis',
+            'prenom.required' => 'le champs prenom est requis',
+            'description.required' => 'le champs description est requis',
+            'url_image.required' => 'la photo est requise',
+            'url_image.image' => 'Le fichier doit être de type jpg,png,jpeg',
+            'url_image.mimes' => 'Le fichier doit être de type jpg,png,jpeg',
+            'url_image.max' => 'le taille de fichier doit être inferieur à 2mo  ',
+
+
+        ];
+    }
 }

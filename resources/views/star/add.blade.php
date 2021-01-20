@@ -13,19 +13,20 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <!-- component -->
             @if ($errors->any())
-
                 <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500">
-  <span class="text-xl inline-block mr-5 align-middle">
-    <i class="fas fa-bell"/>
-  </span>
+                     <span class="text-xl inline-block mr-5 align-middle">
+                         <i class="fas fa-bell"></i>
+                     </span>
                     <span class="inline-block align-middle mr-8">
-    <b class="capitalize">Erreur de saisie </b>  @foreach ($errors->all() as $error)
+                            <b class="capitalize">Erreur de saisie </b>  @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
-  </span>
+             </span>
                     <button
-                        class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
+                        class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+                        onclick="closeAlert(event)">
                         <span>×</span>
+
                     </button>
                 </div>
             @endif
@@ -38,7 +39,7 @@
                         <div class="grid grid-cols-1 gap-6">
                             <div class="col-span-1 sm:col-span-2">
                                 <div class="mt-1 flex rounded-md shadow-sm">
-                                    <input type="text" name="nom" id="company_website"
+                                    <input type="text" name="nom" value="{{old('nom','')}}"
                                            class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                            placeholder="Nom">
                                 </div>
@@ -48,7 +49,7 @@
                         <div class="grid grid-cols-1 gap-6">
                             <div class="col-span-3 sm:col-span-2">
                                 <div class="mt-1 flex rounded-md shadow-sm">
-                                    <input type="text" name="prenom" id="company_website"
+                                    <input type="text" name="prenom" value="{{old('prenom','')}}"
                                            class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                            placeholder="Prénom">
                                 </div>
@@ -58,16 +59,17 @@
                         <div class="grid grid-cols-1 gap-6">
                             <div class="col-span-3 sm:col-span-2">
                                 <div class="mt-1">
-                                            <textarea id="about" name="description" rows="3"
+                                            <textarea name="description" rows="3"
                                                       class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-                                                      placeholder="Description"></textarea>
+                                                      placeholder="Description">{{old('description','')}}</textarea>
                                 </div>
                             </div>
                         </div>
 
 
                         <div class="grid grid-cols-3 gap-y-4">
-                            <div class="col-span-2 sm:col-span-2">
+                            <div class="col-span-1 sm:col-span-1">
+                                <label>Photo: </label>
                                 <input type="file" name="url_image">
                             </div>
                         </div>
@@ -89,4 +91,15 @@
     </div>
 </x-app-layout>
 
+
+<script>
+    function closeAlert(event) {
+        let element = event.target;
+        while (element.nodeName !== "BUTTON") {
+            element = element.parentNode;
+        }
+        element.parentNode.parentNode.removeChild(element.parentNode);
+    }
+
+</script>
 

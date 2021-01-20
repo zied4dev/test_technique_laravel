@@ -54,13 +54,13 @@ class StarController extends Controller
         //
 
 
-        if($this->starRepository->store($request)==true)
+        if($this->starRepository->store($request)==true && $request->validated())
         {
             return redirect('dashboard')->with('alert-succes','Star est ajouté avec succes');
 
         }else
             {
-                return redirect('dashboard')->with('alert-error','Star est ajouté avec succes');
+                return redirect()->back()->withInput();
             };
 
     }

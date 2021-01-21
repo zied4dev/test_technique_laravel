@@ -4,7 +4,7 @@
             <div class="absolute inset-y-0 right-0 w-16 ...">
 
                 <a href="{{route('createStar')}}"
-                   class="inset-y-0 right-1.5 bg-blue-500 font-bold text-white   px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                   class="inset-y-0 right-4 bg-blue-500 font-bold text-white   px-8 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
                     Ajouter
                 </a>
 
@@ -95,7 +95,7 @@
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{ route('editStar',$oneStar->id) }}"
+                                                <a href="{{ route('editStar',$oneStar) }}"
                                                    class="h-10 px-5  py-3 m-2 text-blue-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-700"><i
                                                         class="fa trash "></i>
                                                     Modifier</a>
@@ -111,10 +111,9 @@
                                     </tbody>
 
                                 </table>
-                                <div class="py-5">
-                                    <nav class="block">
+                                <div class="py-8 px-3"  >
                                         {{ $allStars->links() }}
-                                    </nav>
+
                                 </div>
                             </div>
                         </div>

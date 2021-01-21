@@ -81,9 +81,11 @@ class StarController extends Controller
      * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
-    public function edit(Star $star)
+    public function editStar(Star $star)
     {
         //
+        return view('star.edit',compact('star'));
+
     }
 
     /**
@@ -93,9 +95,15 @@ class StarController extends Controller
      * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Star $star)
+    public function updateStar(StarRequest $request, Star $star)
     {
         //
+        if ($this->starRepository->update($request,$star) == true && $request->validated()) {
+
+            return redirect('dashboard')->with('alert-succes', 'Star est modifié avec succes');
+
+        }
+        return redirect()->back()->withInput();
     }
 
     /**

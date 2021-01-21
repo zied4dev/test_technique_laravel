@@ -37,7 +37,7 @@ class StarRepository implements StarRepositoryInterface
             $star->description = $request->description;
             if ($files = $request->file('url_image')) {
                 $destinationPath = 'photos/avatar/'; // upload path
-                $profileImage = $star->nom.'-'.date('YmdHis') . "." . $files->getClientOriginalExtension();
+                $profileImage = $star->nom . '-' . date('YmdHis') . "." . $files->getClientOriginalExtension();
                 $files->move($destinationPath, $profileImage);
                 $star->url_image = "$profileImage";
             }
@@ -59,5 +59,15 @@ class StarRepository implements StarRepositoryInterface
     public function destroy($id)
     {
         // TODO: Implement destroy() method.
+        try {
+            if ($this->star->where('id', $id)->delete()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

@@ -16,7 +16,7 @@ class StarController extends Controller
 
     public function __construct(StarRepositoryInterface $starRepository)
     {
-        $this->starRepository=$starRepository;
+        $this->starRepository = $starRepository;
     }
 
 
@@ -54,21 +54,20 @@ class StarController extends Controller
         //
 
 
-        if($this->starRepository->store($request)==true && $request->validated())
-        {
-            return redirect('dashboard')->with('alert-succes','Star est ajouté avec succes');
+        if ($this->starRepository->store($request) == true && $request->validated()) {
 
-        }else
-            {
-                return redirect()->back()->withInput();
-            };
+            return redirect('dashboard')->with('alert-succes', 'Star est ajouté avec succes');
+
+        }
+        return redirect()->back()->withInput();
+
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Star  $star
+     * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
     public function show(Star $star)
@@ -79,7 +78,7 @@ class StarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Star  $star
+     * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
     public function edit(Star $star)
@@ -90,8 +89,8 @@ class StarController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Star  $star
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Star $star)
@@ -102,12 +101,18 @@ class StarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Star  $star
+     * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Star $star)
+    public function deleteStar(Star $star)
     {
         //
+        if (!$this->starRepository->destroy($star->id)) {
+            return redirect('dashboard')->with('alert-error', 'Star n\'est supprimé ');
+        }
+        return redirect('dashboard')->with('alert-succes', 'Star est supprimé avec succes');
+
+
     }
 
     /**
@@ -117,8 +122,8 @@ class StarController extends Controller
      */
     public function dashboard()
     {
-        $allStars=$this->starRepository->displayAll();
-        return view('dashboard',compact('allStars'));
+        $allStars = $this->starRepository->displayAll();
+        return view('dashboard', compact('allStars'));
     }
 
 }

@@ -17,12 +17,12 @@
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             @if (session('alert-succes'))
                 <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500">
-               <span class="text-xl inline-block mr-5 align-middle">
-                <i class="fas fa-bell"></i>
-               </span>
+  <span class="text-xl inline-block mr-5 align-middle">
+    <i class="fas fa-bell"></i>
+  </span>
                     <span class="inline-block align-middle mr-8">
-                     <b class="capitalize">{{session('alert-succes')}}
-                </span>
+    <b class="capitalize">{{session('alert-succes')}}</b>
+  </span>
                     <button
                         class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
                         onclick="closeAlert(event)">
@@ -30,14 +30,16 @@
 
                     </button>
                 </div>
+
+
             @elseif(session('alert-error'))
                 <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500">
-                 <span class="text-xl inline-block mr-5 align-middle">
-                    <i class="fas fa-bell"></i>
-                       </span>
+  <span class="text-xl inline-block mr-5 align-middle">
+    <i class="fas fa-bell"></i>
+  </span>
                     <span class="inline-block align-middle mr-8">
-                             <b class="capitalize">{{session('alert-error')}}
-                        </span>
+    <b class="capitalize">{{session('alert-error')}}</b>
+  </span>
                     <button
                         class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
                         onclick="closeAlert(event)">
@@ -45,6 +47,7 @@
 
                     </button>
                 </div>
+
             @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex flex-col">
@@ -93,10 +96,12 @@
 
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="{{ route('editStar',$oneStar->id) }}"
-                                                   class="text-indigo-600 hover:text-indigo-900"><i class="fa trash "></i>
-                                                    Edit</a>
+                                                   class="h-10 px-5  py-3 m-2 text-blue-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-700"><i
+                                                        class="fa trash "></i>
+                                                    Modifier</a>
                                                 <a href="{{  route('deleteStar',$oneStar->id) }}"
-                                                   class="text-indigo-600 hover:text-indigo-900">Sup</a>
+
+                                                   class="h-10 px-5 py-3 m-2 text-red-100 transition-colors duration-150 bg-red-700 rounded-lg focus:shadow-outline hover:bg-red-800">Supprimer</a>
 
                                             </td>
                                         </tr>
@@ -120,6 +125,7 @@
         </div>
     </div>
 </x-app-layout>
+
 <script>
     function closeAlert(event) {
         let element = event.target;

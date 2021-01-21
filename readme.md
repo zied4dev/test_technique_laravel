@@ -1,4 +1,4 @@
-C'est un test technique vous trouvez.
+C'est un test technique.
 1 - Il tout d'abord installer laragon .
 2 - Creer une base de donnee "db_test"
 3 - Décompresser le dossier de projet dans le dossier www

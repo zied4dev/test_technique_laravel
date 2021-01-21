@@ -20,12 +20,6 @@ class StarController extends Controller
     }
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @param StarRepositoryInterface $starRepository
-     * @return \Illuminate\Http\Response
-     */
     public function home()
     {
         $allStars=$this->starRepository->displayAll();
@@ -35,8 +29,6 @@ class StarController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -45,9 +37,6 @@ class StarController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     *
      * @param StarRequest $request
      * @return \Illuminate\Http\Response
      */
@@ -58,7 +47,7 @@ class StarController extends Controller
 
         if ($this->starRepository->store($request) == true && $request->validated()) {
 
-            return redirect('dashboard')->with('alert-succes', 'Star est ajouté avec succes');
+            return redirect('dashboard')->with('alert-succes', 'Le fichier star a été ajouté avec succès');
 
         }
         return redirect()->back()->withInput();
@@ -66,20 +55,8 @@ class StarController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Star $star
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Star $star)
-    {
-        //
-    }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
@@ -91,8 +68,6 @@ class StarController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
@@ -102,15 +77,13 @@ class StarController extends Controller
         //
         if ($this->starRepository->update($request,$star) == true && $request->validated()) {
 
-            return redirect('dashboard')->with('alert-succes', 'Star est modifié avec succes');
+            return redirect('dashboard')->with('alert-succes', 'Le fichier star a été modifié avec succès');
 
         }
         return redirect()->back()->withInput();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param \App\Models\Star $star
      * @return \Illuminate\Http\Response
      */
@@ -118,9 +91,9 @@ class StarController extends Controller
     {
         //
         if (!$this->starRepository->destroy($star->id)) {
-            return redirect('dashboard')->with('alert-error', 'Star n\'est supprimé ');
+            return redirect('dashboard')->with('alert-error', 'Impossible de supprimer le fichier star ');
         }
-        return redirect('dashboard')->with('alert-succes', 'Star est supprimé avec succes');
+        return redirect('dashboard')->with('alert-succes', 'Le fichier star a été supprimé avec succès');
 
 
     }

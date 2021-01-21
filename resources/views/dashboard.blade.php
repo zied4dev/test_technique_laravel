@@ -21,7 +21,7 @@
     <i class="fas fa-bell"></i>
   </span>
                     <span class="inline-block align-middle mr-8">
-    <b class="capitalize">{{session('alert-succes')}}</b>
+    {{session('alert-succes')}}
   </span>
                     <button
                         class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
@@ -38,7 +38,7 @@
     <i class="fas fa-bell"></i>
   </span>
                     <span class="inline-block align-middle mr-8">
-    <b class="capitalize">{{session('alert-error')}}</b>
+    {{session('alert-error')}}
   </span>
                     <button
                         class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
@@ -81,10 +81,12 @@
                                                 <div class="flex items-center">
                                                     <div class="flex-shrink-0 h-10 w-10">
                                                         @if (file_exists (public_path ('photos/avatar/'.$oneStar->url_image)))
-                                                            <img class="h-10 w-10 rounded-full" src="{{ asset('photos/avatar/'.$oneStar->url_image) }}"
+                                                            <img class="h-10 w-10 rounded-full"
+                                                                 src="{{ asset('photos/avatar/'.$oneStar->url_image) }}"
                                                                  id="imageLeft">
                                                         @else
-                                                            <img class="h-10 w-10 rounded-full" src="{{ asset('photos/avatar/avatar.jpg') }}"
+                                                            <img class="h-10 w-10 rounded-full"
+                                                                 src="{{ asset('photos/avatar/avatar.jpg') }}"
                                                                  id="imageLeft">
                                                         @endif
 
@@ -116,8 +118,8 @@
                                     </tbody>
 
                                 </table>
-                                <div class="py-8 px-3"  >
-                                        {{ $allStars->links() }}
+                                <div class="py-8 px-3">
+                                    {{ $allStars->links() }}
 
                                 </div>
                             </div>

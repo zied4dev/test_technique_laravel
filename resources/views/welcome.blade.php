@@ -166,8 +166,13 @@
 
             @foreach($allStars as $oneStar)
                 <div class="tab-pane" id="tabs-{{$oneStar->id}}">
-                    <img class="h-10 w-10 rounded-full" src="{{ url('photos/avatar/'.$oneStar->url_image) }}"
-                         id="imageLeft">
+                    @if (file_exists (public_path ('photos/avatar/'.$oneStar->url_image)))
+                        <img class="h-10 w-10 rounded-full" src="{{ url('photos/avatar/'.$oneStar->url_image) }}"
+                             id="imageLeft">
+                    @else
+                        <img class="h-10 w-10 rounded-full" src="{{ url('photos/avatar/avatar.jpg') }}"
+                             id="imageLeft">
+                    @endif
 
                     <h3>{{$oneStar->nom }} {{$oneStar->prenom }}</h3>
                     <p>
@@ -193,10 +198,13 @@
                 </div>
                 <div id="collapse-{{ $oneStar->id }}" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <img class="h-10 w-10 rounded-full" src="{{ url('photos/avatar/'.$oneStar->url_image) }}"
-                             id="imageLeft">
-
-
+                        @if (file_exists (public_path ('photos/avatar/'.$oneStar->url_image)))
+                            <img class="h-10 w-10 rounded-full" src="{{ url('photos/avatar/'.$oneStar->url_image) }}"
+                                 id="imageLeft">
+                        @else
+                            <img class="h-10 w-10 rounded-full" src="{{ url('photos/avatar/avatar.jpg') }}"
+                                 id="imageLeft">
+                        @endif
                         <p> {{$oneStar->description }}</p>
                     </div>
                 </div>

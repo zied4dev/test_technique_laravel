@@ -72,7 +72,16 @@
                         <div class="grid grid-cols-3 gap-y-4">
                             <div class="col-span-1 sm:col-span-1">
                                 <label>Photo: </label>
+                                @if (file_exists (public_path ('photos/avatar/'.$star->url_image)))
+
                                     <img src="{{ asset('photos/avatar/'.$star->url_image) }}" class="h-24 w-24 object-cover rounded-full">
+
+                                @else
+                                    <img class="h-24 w-24 object-cover rounded-full" src="{{ asset('photos/avatar/avatar.jpg') }}"
+                                        >
+                                @endif
+
+
                                 <input type="file" name="url_image" value="{{$star->url_image}}" class=" py-3 ">
                             </div>
                         </div>

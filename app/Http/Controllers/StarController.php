@@ -28,7 +28,9 @@ class StarController extends Controller
      */
     public function home()
     {
-        //
+        $allStars=$this->starRepository->displayAll();
+
+        return view('welcome',compact('allStars'));
 
     }
 

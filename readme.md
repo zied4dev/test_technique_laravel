@@ -1,7 +1,7 @@
 C'est un test technique vous trouvez.
 1 - Il tout d'abord installer laragon .
-2 - Creer un base de donnee "db_test"
-2 - Décompresser le dossier de projet dans le dossier www
+2 - Creer une base de donnee "db_test"
+3 - Décompresser le dossier de projet dans le dossier www
 3 - Ouvrir le projet avec un Editeur de code Vs ou PhpStorm
 4 - Excuter les commandes php
     php artisan migrate:install

@@ -14,7 +14,7 @@
     </x-slot>
     <div class="py-20">
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if (session('alert-succes'))
                 <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500">
   <span class="text-xl inline-block mr-5 align-middle">
